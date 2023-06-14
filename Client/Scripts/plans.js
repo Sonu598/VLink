@@ -8,16 +8,16 @@ btn1.addEventListener("click",()=>{
 
 btn2.addEventListener("click",()=>{
     localStorage.setItem("amount","$19");
-    window.location.href="../payment.html"
+    window.location.href="/Client/payment.html"
 });
 
 btn3.addEventListener("click",()=>{
     localStorage.setItem("amount","$39");
-    window.location.href="../payment.html"
+    window.location.href="/Client/payment.html"
 });
 
 btn4.addEventListener("click",()=>{
     localStorage.setItem("amount","$79");
-    window.location.href="../payment.html"
+    window.location.href="/Client/payment.html"
 });
 
