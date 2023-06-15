@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const UserModel = require('../model/userModel');
 const BlackModel = require('../model/blacklist');
 const PostModel = require('../model/postModel');
+const {transporter}=require("../middleware/nodemailer");
+const {client}=require("../connection/redis");
+const auth = require('./middleware/auth');
 
 const userRouter = express.Router()
 
@@ -65,7 +68,87 @@ userRouter.post("/logout", async (req, res) => {
     } catch (error) {
         res.status(401).send({ "msg": error.message })
     }
+});
+
+
+// generate otp and send to client and also store it in redis.
+
+
+userRouter.post("/sendmail",auth,async(req,res)=>{
+    const {userID,amount}=req.body;
+    try{
+        let user= await UserModel.findOne({_id:userID});
+        const otp=Math.floor((Math.random()*1000000)+1);
+        await client.set(user.email,otp,"EX",15*60);
+       
+        let mailOptions = {
+            from: 'sambhajisd4@gmail.com',
+            to: user.email,
+            subject: 'TRANSCTION OTP',
+            text: `YOUR OTP FOR PAYMENT OF RS ${amount} FOR Vlink PLAN IS : ${otp}
+            note:- This OTP is valid for only 15 minutes.`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                // console.log(error);
+                res.status(401).send({"error":"Internal server error"});
+            } else {
+                // console.log('Email sent: ' + info.response);
+                res.status(200).send({"msg":"Email sent successfully"});
+            }
+        });
+
+    }catch(err){
+        res.status(401).send(err);
+    }
+});
+
+//verify otp from redis
+
+userRouter.post("/verify",auth,async(req,res)=>{
+    try{
+        const {otp}=req.body;
+        const user= await UserModel.findOne({_id:req.body.userID});
+        const data= await client.get(user.email);
+        if(otp==data){
+            res.status(200).send({"msg":true});
+        }else{
+            res.status(400).send({"msg":false});
+        }
+
+    }catch(err){
+        res.status(401).send({"error":err});
+    }
 })
+
+
+
+userRouter.post("/forgetpassword",async(req,res)=>{
+    let {email,password}=req.body;
+    try{
+        const user = await UserModel.findOne({ email });
+         if(user){
+            bcrypt.hash(password, 5, async (err, hash) => {
+                password=hash;
+                let id=user._id;
+                let data= await UserModel.findByIdAndUpdate(id,{...user,password});
+                
+                res.status(201).send({ "msg": "Password update Succesfull" })
+            });
+
+        }else{
+            res.status(400).send({"error":"Please provide correct E-mail Id"})
+        }
+
+    }catch(err){
+        res.status(400).send({"error":err})
+    }
+})
+
+
+
+
 userRouter.get("/blacklist", async (req, res) => {
     try {
         const token = req.headers?.authorization
@@ -90,6 +173,33 @@ userRouter.get("/findgoogle", async (req, res) => {
         res.status(401).send({ "msg": error.message })
 
     }
-})
+});
+
+
+
+// const JWT_SECRET="hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe"
+// userRouter.post("/forgot-password", async(req,res)=>{
+//     const {email}=req.body
+//     try {
+//         const olduser=await UserModel.findOne({email})
+//         if(!olduser){
+//             return res.send("User Not Exists!");
+//         }
+//         const secret=JWT_SECRET+ olduser.password
+//         const token = jwt.sign({ email: olduser.email, id: olduser._id }, secret, {
+//             expiresIn: "5m",
+//           });
+//           const link = `http://localhost:5000/reset-password/${oldUser._id}/${token}`;
+//           var transporter = nodemailer.createTransport({
+//             service: "gmail",
+//             auth: {
+//               user: "adarsh438tcsckandivali@gmail.com",
+//               pass: "rmdklolcsmswvyfw",
+//             },
+//           });
+//     } catch (error) {
+        
+//     }
+// })
 
 module.exports = userRouter
