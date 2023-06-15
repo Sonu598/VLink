@@ -18,13 +18,3 @@ function auth(req,res,next){
 
 module.exports = auth
 
-
-// {
-//     "name": "shaikh",
-//     "email": "shaikh@gmail.com",
-//     "gender": "Male",
-//     "password": "shaikh",
-//     "age": 23,
-//     "city": "Mumbai",
-//     "is_married": false
-//   }
