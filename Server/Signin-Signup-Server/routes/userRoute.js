@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const UserModel = require('../model/userModel');
 const BlackModel = require('../model/blacklist');
 const PostModel = require('../model/postModel');
+const {transporter}=require("../middleware/nodemailer");
+const {client}=require("../connection/redis");
+const auth = require('./middleware/auth');
 
 const userRouter = express.Router()
 
@@ -66,6 +69,7 @@ userRouter.post("/logout", async (req, res) => {
         res.status(401).send({ "msg": error.message })
     }
 });
+
 userRouter.post("/forgetpassword",async(req,res)=>{
     let {email,password}=req.body;
     try{
@@ -74,7 +78,7 @@ userRouter.post("/forgetpassword",async(req,res)=>{
             bcrypt.hash(password, 5, async (err, hash) => {
                 password=hash;
                 let id=user._id;
-                let data= await UserModel.findByIdAndUpdate(id,req.body);
+                let data= await UserModel.findByIdAndUpdate(id,{...user,password});
                 
                 res.status(201).send({ "msg": "Password update Succesfull" })
             });
@@ -87,6 +91,10 @@ userRouter.post("/forgetpassword",async(req,res)=>{
         res.status(400).send({"error":err})
     }
 })
+
+
+
+
 userRouter.get("/blacklist", async (req, res) => {
     try {
         const token = req.headers?.authorization
@@ -112,32 +120,5 @@ userRouter.get("/findgoogle", async (req, res) => {
 
     }
 });
-
-
-
-const JWT_SECRET="hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe"
-userRouter.post("/forgot-password", async(req,res)=>{
-    const {email}=req.body
-    try {
-        const olduser=await UserModel.findOne({email})
-        if(!olduser){
-            return res.send("User Not Exists!");
-        }
-        const secret=JWT_SECRET+ olduser.password
-        const token = jwt.sign({ email: olduser.email, id: olduser._id }, secret, {
-            expiresIn: "5m",
-          });
-          const link = `http://localhost:5000/reset-password/${oldUser._id}/${token}`;
-          var transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-              user: "adarsh438tcsckandivali@gmail.com",
-              pass: "rmdklolcsmswvyfw",
-            },
-          });
-    } catch (error) {
-        
-    }
-})
 
 module.exports = userRouter
