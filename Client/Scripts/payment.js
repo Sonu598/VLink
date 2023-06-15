@@ -60,14 +60,16 @@ Walletbutton.addEventListener("click",()=>{
     btn1.innerText=`PAY ₹ ${total}` ;
 
     btn1.addEventListener("click",()=>{
-        main.innerHTML=`<h1> Your Payment Is Successfull </h1>`;
-        // main.style.textAlign="center";
-        main.style.display="flex";
-        main.style.justifyContent="center";
-        main.style.alignItems="center";
-       setTimeout(() => {
-        location.href="index.html";
-       },2000);
+        // main.innerHTML=`<h1> Your Payment Is Successfull </h1>`;
+        // // main.style.textAlign="center";
+        // main.style.display="flex";
+        // main.style.justifyContent="center";
+        // main.style.alignItems="center";
+        // payment confirmation page
+        location.href="OTP.html";
+    //    setTimeout(() => {
+    //     location.href="index.html";
+    //    },2000);
 
     })
 
@@ -217,14 +219,15 @@ function showdata(){
     paybtn.style.color="white";
 
     paybtn.addEventListener("click",()=>{
-        main.innerHTML=`<h1> Your Payment Is Successfull </h1>`;
-        // main.style.textAlign="center";
-        main.style.display="flex";
-        main.style.justifyContent="center";
-        main.style.alignItems="center";
-       setTimeout(() => {
-        location.href="index.html";
-       },2000);
+        // main.innerHTML=`<h1> Your Payment Is Successfull </h1>`;
+        // // main.style.textAlign="center";
+        // main.style.display="flex";
+        // main.style.justifyContent="center";
+        // main.style.alignItems="center";/
+        location.href="OTP.html";
+    //    setTimeout(() => {
+    //     location.href="index.html";
+    //    },2000);
 
     })
     
