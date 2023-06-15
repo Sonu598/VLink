@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <title>dashboard page</title>
     <link rel="stylesheet" href="./Styles/dashboard.css" />
   </head>
   <body>
+    <header></header>
     <div class="mainY">
       <div id="top">
         <h1>Welcome!</h1>
@@ -53,5 +55,17 @@
         </div>
       </div>
     </div>
+    <footer  style="margin-top: 100px;"></footer>
   </body>
 </html>
+<script>
+  $(function () {
+      $('header').load('nav.html');
+  }) 
+</script>
+
+<script>
+  $(function () {
+      $('footer').load('footer.html');
+  }) 
+</script>
