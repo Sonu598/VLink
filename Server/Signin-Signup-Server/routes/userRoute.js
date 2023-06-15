@@ -115,4 +115,29 @@ userRouter.get("/findgoogle", async (req, res) => {
 
 
 
+const JWT_SECRET="hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe"
+userRouter.post("/forgot-password", async(req,res)=>{
+    const {email}=req.body
+    try {
+        const olduser=await UserModel.findOne({email})
+        if(!olduser){
+            return res.send("User Not Exists!");
+        }
+        const secret=JWT_SECRET+ olduser.password
+        const token = jwt.sign({ email: olduser.email, id: olduser._id }, secret, {
+            expiresIn: "5m",
+          });
+          const link = `http://localhost:5000/reset-password/${oldUser._id}/${token}`;
+          var transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user: "adarsh438tcsckandivali@gmail.com",
+              pass: "rmdklolcsmswvyfw",
+            },
+          });
+    } catch (error) {
+        
+    }
+})
+
 module.exports = userRouter
