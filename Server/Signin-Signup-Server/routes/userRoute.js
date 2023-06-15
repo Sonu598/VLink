@@ -65,6 +65,27 @@ userRouter.post("/logout", async (req, res) => {
     } catch (error) {
         res.status(401).send({ "msg": error.message })
     }
+});
+userRouter.post("/forgetpassword",async(req,res)=>{
+    let {email,password}=req.body;
+    try{
+        const user = await UserModel.findOne({ email });
+         if(user){
+            bcrypt.hash(password, 5, async (err, hash) => {
+                password=hash;
+                let id=user._id;
+                let data= await UserModel.findByIdAndUpdate(id,req.body);
+                
+                res.status(201).send({ "msg": "Password update Succesfull" })
+            });
+
+        }else{
+            res.status(400).send({"error":"Please provide correct E-mail Id"})
+        }
+
+    }catch(err){
+        res.status(400).send({"error":err})
+    }
 })
 userRouter.get("/blacklist", async (req, res) => {
     try {
@@ -90,7 +111,9 @@ userRouter.get("/findgoogle", async (req, res) => {
         res.status(401).send({ "msg": error.message })
 
     }
-})
+});
+
+
 
 const JWT_SECRET="hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe"
 userRouter.post("/forgot-password", async(req,res)=>{
