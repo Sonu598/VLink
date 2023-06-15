@@ -25,7 +25,8 @@
     transform: translate(-5px, -20px);
 }
 .upper-portion{
-    background-color: yellow;
+    background-color: rgb(11, 92, 255);
+    color: white;
     padding: 20px 0px;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
