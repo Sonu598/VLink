@@ -13,18 +13,18 @@
         <div class="signup">
             <form>
                 <label for="chk" aria-hidden="true">Sign up</label>
-                <input type="text" name="txt" placeholder="User name" required="">
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="Password" name="pswd" placeholder="Password" required="">
-                <button>Sign up</button>
+                <input type="text" name="txt" id="s-name" placeholder="User name" required="">
+                <input type="email" name="email" id="s-email" placeholder="Email" required="">
+                <input type="Password" name="pswd" id="s-pass" placeholder="Password" required="">
+                <button onClick="onSignup()">Sign up</button>
             </form>
         </div>
         <div class="login">
            <form>
             <label for="chk" aria-hidden="true">Login</label>
-            <input type="email" name="email" placeholder="Email" required="">
-            <input type="Password" name="pswd" placeholder="Password" required="">
-                <button>Login</button>
+            <input type="email" name="email" id="l-email" placeholder="Email" required="">
+            <input type="Password" name="pswd" id="l-pass" placeholder="Password" required="">
+                <button onclick="onLogin()">Login</button>
             <img src="/Client/Images/google_auth.png" id="G_auth" alt="error">
             <img src="/Client/Images/github_auth.png" id="Git_auth" alt="error">
             <a id="forgot" href="./forgot_password.html"><p>Forgot Password</p></a>
@@ -33,4 +33,5 @@
         </div>
     </div>
 </body>
+<script src="/Client/Scripts/login_signup.js"></script>
 </html>
