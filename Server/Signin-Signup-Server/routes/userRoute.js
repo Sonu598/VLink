@@ -6,7 +6,8 @@ const BlackModel = require('../model/blacklist');
 const PostModel = require('../model/postModel');
 const {transporter}=require("../middleware/nodemailer");
 const {client}=require("../connection/redis");
-const auth = require('./middleware/auth');
+const {auth} = require("../middleware/auth");
+const {PaidModel}=require("../model/paidUserModel");
 
 const userRouter = express.Router()
 
@@ -70,16 +71,76 @@ userRouter.post("/logout", async (req, res) => {
     }
 });
 
+
+// generate otp and send to client and also store it in redis.
+
+
+userRouter.post("/sendmail",auth,async(req,res)=>{
+    const {userID,amount}=req.body;
+    try{
+        let user= await UserModel.findOne({_id:userID});
+        console.log(user);
+        const otp=Math.floor((Math.random()*1000000)+1);
+        await client.set(user.email,otp,"EX",15*60);
+       
+        let mailOptions = {
+            from: 'sambhajisd4@gmail.com',
+            to: user.email,
+            subject: 'TRANSCTION OTP',
+            text: `YOUR OTP FOR PAYMENT OF RS ${amount} FOR Vlink PLAN IS : ${otp}
+            note:- This OTP is valid for only 15 minutes.`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                res.status(401).send({"error":"Internal server error"});
+            } else {
+                res.status(200).send({"msg":"Email sent successfully"});
+            }
+        });
+
+    }catch(err){
+        res.status(401).send(err);
+    }
+});
+
+//verify otp from redis
+
+userRouter.post("/verify",auth,async(req,res)=>{
+    try{
+        const {otp}=req.body;
+        const user= await UserModel.findOne({_id:req.body.userID});
+        const data= await client.get(user.email);
+        if(otp==data){
+            // let userdata=await UserModel.findById(user._id);
+            // userdata.plan = "LITE";
+            // console.log(userdata);
+            // await userdata.save();
+            // const newdata=await UserModel.findOne({_id:req.body.userID});
+            const {plan,price}=req.body;
+            const userdata= new PaidModel({plan,price});
+            await userdata.save();
+            res.status(200).send({"msg":true});
+        }else{
+            res.status(400).send({"msg":false});
+        }
+
+    }catch(err){
+        res.status(401).send({"error":err});
+    }
+})
+
+
+
 userRouter.post("/forgetpassword",async(req,res)=>{
     let {email,password}=req.body;
     try{
         const user = await UserModel.findOne({ email });
          if(user){
             bcrypt.hash(password, 5, async (err, hash) => {
-                password=hash;
+                console.log(hash);
                 let id=user._id;
-                let data= await UserModel.findByIdAndUpdate(id,{...user,password});
-                
+                let data= await UserModel.findByIdAndUpdate(id,{"password":hash});
                 res.status(201).send({ "msg": "Password update Succesfull" })
             });
 
@@ -92,9 +153,6 @@ userRouter.post("/forgetpassword",async(req,res)=>{
     }
 })
 
-
-
-
 userRouter.get("/blacklist", async (req, res) => {
     try {
         const token = req.headers?.authorization
@@ -102,7 +160,7 @@ userRouter.get("/blacklist", async (req, res) => {
         if (black) {
             res.send(black)
         } else {
-            res.send({ "msg": "Login Again !!You Are New User" })
+            res.send({ "msg": "Login Again !! You Are New User" })
         }
     } catch (error) {
         res.status(401).send({ "msg": error.message })

@@ -8,16 +8,19 @@ btn1.addEventListener("click",()=>{
 
 btn2.addEventListener("click",()=>{
     localStorage.setItem("amount","299");
+    localStorage.setItem("plan","LITE");
     window.location.href="payment.html"
 });
 
 btn3.addEventListener("click",()=>{
     localStorage.setItem("amount","599");
+    localStorage.setItem("plan","PRO");
     window.location.href="payment.html"
 });
 
 btn4.addEventListener("click",()=>{
     localStorage.setItem("amount","999");
+    localStorage.setItem("plan","PRIMIUM");
     window.location.href="payment.html"
 });
 
