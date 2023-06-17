@@ -233,7 +233,7 @@ function servercall(total,token){
     // }
     let plan=localStorage.getItem("plan");
     obj={amount,plan};
-    fetch("https://sore-shoe-bull.cyclic.app/user/sendmail",{
+    fetch("https://pink-eagle-coat.cyclic.app/user/sendmail",{
         method:"POST",
         headers: {
             "Content-type":"application/json",

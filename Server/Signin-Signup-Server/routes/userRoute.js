@@ -109,14 +109,12 @@ userRouter.post("/sendmail",auth,async(req,res)=>{
 userRouter.post("/verify",auth,async(req,res)=>{
     try{
         const {otp}=req.body;
-        const user= await UserModel.findOne({_id:req.body.userID});
+        const id=req.body.userID;
+        const user= await UserModel.findOne({_id:id});
+        // console.log(user);
         const data= await client.get(user.email);
+        // console.log(data);
         if(otp==data){
-            // let userdata=await UserModel.findById(user._id);
-            // userdata.plan = "LITE";
-            // console.log(userdata);
-            // await userdata.save();
-            // const newdata=await UserModel.findOne({_id:req.body.userID});
             const {plan,price}=req.body;
             const userdata= new PaidModel({plan,price});
             await userdata.save();
