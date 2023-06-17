@@ -183,7 +183,7 @@ getButton.addEventListener("click",(e)=>{
 
 
   function fetched(){
-    fetch("https://stormy-flannel-shirt-ox.cyclic.app/products/1")
+    fetch("https://pink-eagle-coat.cyclic.app/")
         .then((res)=>res.json())
         .then(res=>{
             // console.log(res.product)
@@ -203,31 +203,31 @@ getButton.addEventListener("click",(e)=>{
       data.forEach(el=>{
         let getbox = document.createElement("div")
         let image = document.createElement("img")
-        let productID = document.createElement("h4")
+        let UserID = document.createElement("h4")
         let name = document.createElement("h3")
-        let price = document.createElement("p")
-        let gender = document.createElement("p")
-        let strikePrice = document.createElement("s")
-        let category = document.createElement("p")
-        let brand = document.createElement("p")
-        let rating = document.createElement("p")
-        let color = document.createElement("p")
-        let discount = document.createElement("p")
+        // let price = document.createElement("p")
+        // let gender = document.createElement("p")
+        // let strikePrice = document.createElement("s")
+        let email = document.createElement("p")
+        // let brand = document.createElement("p")
+        // let rating = document.createElement("p")
+        // let color = document.createElement("p")
+        // let discount = document.createElement("p")
         let remove = document.createElement("button")
       
 
-        image.src = el.image
+        image.src = "/Client/Images/3135715-removebg-preview.png"
         productID.textContent = `ID: ${el._id}`
         name.textContent = `${el.name}`
-        price.textContent = `Price  : ${el.price}`
-        gender.textContent = `Gender  : ${el.gender}`
-        strikePrice.textContent = `${el.strikePrice}`
-        strikePrice.style.display = "inline"
-        category.textContent = `Category  : ${el.category}`
-        brand.textContent = `Brand  : ${el.brand}`
-        rating.textContent = `Rating  : ${el.rating}`
-        color.textContent = `Color  : ${el.color}`
-        discount.textContent = `Discount  : ${el.discount}`
+        // price.textContent = `Price  : ${el.price}`
+        // gender.textContent = `Gender  : ${el.gender}`
+        // strikePrice.textContent = `${el.strikePrice}`
+        // strikePrice.style.display = "inline"
+        email.textContent = `Email  : ${el.category}`
+        // brand.textContent = `Brand  : ${el.brand}`
+        // rating.textContent = `Rating  : ${el.rating}`
+        // color.textContent = `Color  : ${el.color}`
+        // discount.textContent = `Discount  : ${el.discount}`
         remove.textContent = "Delete Item"
 
         remove.addEventListener("click",()=>{
@@ -240,9 +240,10 @@ getButton.addEventListener("click",(e)=>{
               }
         })
 
-        getbox.append(image,productID,name,gender,price,strikePrice,category,brand,rating,color,discount,remove)
+        // getbox.append(image,productID,name,gender,price,strikePrice,category,brand,rating,color,discount,remove)
+        // addBox.append(getbox)
+        getbox.append(image,userID,name,email,remove)
         addBox.append(getbox)
-
       })
     }
   
@@ -392,7 +393,7 @@ function fetchedUser(){
       .then((res)=>res.json())
       .then(res=>{
           console.log(res.data)
-          // displayData(res.data)
+          displayData(res.data)
       })
 
       .catch((err)=>{
@@ -406,21 +407,22 @@ const tbody = document.querySelector(".details tbody")
 tbody.innerHTML = null;
 
 data.forEach((el)=>{
-
+console.log(el.username)
   let row = document.createElement("tr");
   let name = document.createElement("td");
   let price = document.createElement("td");
   let status = document.createElement("td");
   let statusInside = document.createElement("span");
 
-  name.textContent = el.name;
+  name.textContent = el.username;
   price.textContent = el.price;
   statusInside.textContent = el.plan;
-  status.innerHTML = statusInside;
-
+  statusInside.setAttribute("class", "status delivered")
+  status.appendChild(statusInside);
   row.append(name,price,status)
+  tbody.append(row)
 })
-tbody.append(row)
+
 }
 
 
