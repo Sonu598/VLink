@@ -16,7 +16,7 @@
                 <input type="text" name="txt" id="s-name" placeholder="User name" required="">
                 <input type="email" name="email" id="s-email" placeholder="Email" required="">
                 <input type="Password" name="pswd" id="s-pass" placeholder="Password" required="">
-                <button onclick="onSignup()">Sign up</button>
+                <button onclick="event.preventDefault();onSignup()">Sign up</button>
             </form>
         </div>
         <div class="login">
@@ -24,7 +24,7 @@
             <label for="chk" aria-hidden="true">Login</label>
             <input type="email" name="email" id="l-email" placeholder="Email" required="">
             <input type="Password" name="pswd" id="l-pass" placeholder="Password" required="">
-                <button onclick="onLogin()">Login</button>
+                <button onclick="event.preventDefault();onLogin()">Login</button>
             <img src="/Client/Images/google_auth.png" id="G_auth" alt="error">
             <a id="forgot" href="./forgot_password.html"><p>Forgot Password</p></a>
            </form> 

@@ -186,7 +186,7 @@ getButton.addEventListener("click",(e)=>{
     fetch("https://stormy-flannel-shirt-ox.cyclic.app/products/1")
         .then((res)=>res.json())
         .then(res=>{
-            console.log(res.product)
+            // console.log(res.product)
             displayData(res.product)
         })
 
@@ -254,7 +254,7 @@ function deleteProduct(id){
             })
             .then((res)=>res.json())
         .then(res=>{
-            console.log(res)
+            // console.log(res)
         })
 
         .catch((err)=>{
@@ -297,7 +297,7 @@ userlist.addEventListener("click",(e)=>{
         fetch('https://stormy-flannel-shirt-ox.cyclic.app/users1/')
         .then(res => res.json())
         .then(data => {
-          console.log(data.user)
+          // console.log(data.user)
           displayData(data.user)
       })
         .catch((err)=>{
@@ -362,7 +362,7 @@ userlist.addEventListener("click",(e)=>{
 fetch('https://stormy-flannel-shirt-ox.cyclic.app/products/')
         .then(res => res.json())
         .then(data => {
-          console.log(data.product.length)   
+          // console.log(data.product.length)   
           const totalP = document.querySelector("#totalP")
           totalP.innerHTML = data.product.length
       })
@@ -374,7 +374,7 @@ fetch('https://stormy-flannel-shirt-ox.cyclic.app/products/')
 fetch('https://stormy-flannel-shirt-ox.cyclic.app/users/')
         .then(res => res.json())
         .then(data => {
-          console.log(data.user)
+          // console.log(data.user)
           const totalU = document.querySelector("#totalU")
           totalU.innerHTML = data.user.length
       })
@@ -386,13 +386,28 @@ fetch('https://stormy-flannel-shirt-ox.cyclic.app/users/')
 
 //-----------------------DASHBOARD PAGE [Premium Customers]---------------------------
 
+
+function fetchedUser(){
+  fetch("https://pink-eagle-coat.cyclic.app/paiduser/")
+      .then((res)=>res.json())
+      .then(res=>{
+          console.log(res.data)
+          // displayData(res.data)
+      })
+
+      .catch((err)=>{
+          return err
+      })
+  }
+  fetchedUser()
+
 function displayData(data){
 const tbody = document.querySelector(".details tbody")
 tbody.innerHTML = null;
 
 data.forEach((el)=>{
 
-  let row  = document.createElement("tr");
+  let row = document.createElement("tr");
   let name = document.createElement("td");
   let price = document.createElement("td");
   let status = document.createElement("td");
@@ -408,4 +423,6 @@ data.forEach((el)=>{
 tbody.append(row)
 }
 
+
+//-----------------------ALL USERS---------------------------
 
