@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/Client/Styles/login.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" name="txt" id="s-name" placeholder="User name" required="">
+                <input type="email" name="email" id="s-email" placeholder="Email" required="">
+                <input type="Password" name="pswd" id="s-pass" placeholder="Password" required="">
+                <button onclick="event.preventDefault();onSignup()">Sign up</button>
+            </form>
+        </div>
+        <div class="login">
+           <form>
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" id="l-email" placeholder="Email" required="">
+            <input type="Password" name="pswd" id="l-pass" placeholder="Password" required="">
+                <button onclick="event.preventDefault();onLogin()">Login</button>
+            <img src="/Client/Images/google_auth.png" id="G_auth" alt="error">
+            <img src="/Client/Images/github_auth.png" id="Git_auth" alt="error">
+            <a id="forgot" href="./forgot_password.html"><p>Forgot Password</p></a>
+           </form> 
+          
+        </div>
+    </div>
+</body>
+<script src="/Client/Scripts/login_signup.js"></script>
+</html>

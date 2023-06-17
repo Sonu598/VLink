@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+
 #footerY {
   /* border: 1px solid black; */
   display: flex;
@@ -37,7 +41,7 @@
   color: #0b5cff;
 }
 #footerY button:nth-child(1):hover {
-  background-color: #1ca9a4;
+  background-color: #ffffff;
   color: black;
 }
 /* mid section start */

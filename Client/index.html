@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <title>Vlink</title>
     <!-- icon link -->
     <link
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="./Styles/index.css" />
   </head>
   <body>
-
+    <header></header>
     <!-- mid section started -->
     <div id="mid">
       <div class="mid-1">
@@ -148,6 +149,18 @@
         <button>Sign Up,It's Free</button> <button>Plans & Pricing</button>
       </div>
     </div>
+    <footer  style="margin-top: 100px;"></footer>
   </body>
   <!-- <script src="./Scripts/indexpage.js"></script> -->
 </html>
+<script>
+  $(function () {
+      $('header').load('nav.html');
+  }) 
+</script>
+
+<script>
+  $(function () {
+      $('footer').load('footer.html');
+  }) 
+</script>

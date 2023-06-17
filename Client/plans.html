@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <title>select your plan</title>
     <link rel="stylesheet" href="./Styles/plans.css">
 </head>
 <body>
-    
+    <header></header>
     <div id="container">
 
         <div class="cards">
@@ -92,8 +93,19 @@
         </div>
 
     </div>
-
+    <footer  style="margin-top: 100px;"></footer>
     
 </body>
 <script src="./Scripts/plans.js"></script>
 </html>
+<script>
+    $(function () {
+        $('header').load('nav.html');
+    }) 
+  </script>
+  
+  <script>
+    $(function () {
+        $('footer').load('footer.html');
+    }) 
+  </script>

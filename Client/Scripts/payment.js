@@ -35,7 +35,6 @@ Walletbutton.addEventListener("click",()=>{
 
     let span=document.createElement("span");
     span.setAttribute("id","span");
-    // span.innerText=`${total}`;
 
     let image=document.createElement("img");
     image.src="https://www.zoomcar.com/build/760ee3019ff287f2caed7e40c92b1ca5.png";
@@ -60,16 +59,8 @@ Walletbutton.addEventListener("click",()=>{
     btn1.innerText=`PAY ₹ ${total}` ;
 
     btn1.addEventListener("click",()=>{
-        // main.innerHTML=`<h1> Your Payment Is Successfull </h1>`;
-        // // main.style.textAlign="center";
-        // main.style.display="flex";
-        // main.style.justifyContent="center";
-        // main.style.alignItems="center";
-        // payment confirmation page
-        location.href="OTP.html";
-    //    setTimeout(() => {
-    //     location.href="index.html";
-    //    },2000);
+        let token=localStorage.getItem("token");
+        servercall(total,token);
 
     })
 
@@ -96,7 +87,7 @@ NETbankingbutton.addEventListener("click",()=>{
 
     let span=document.createElement("span");
     span.setAttribute("id","span");
-    // span.innerText=`${total}`;
+    
 
     let image=document.createElement("img");
     image.src="https://www.zoomcar.com/build/760ee3019ff287f2caed7e40c92b1ca5.png";
@@ -169,10 +160,10 @@ function showdata(){
     let p1=document.createElement("p");
     p1.setAttribute("class","subType_middle");
     p1.innerText=`Amount : ₹ ${total}` ;
-    // console.log(p1.innerText);
+    
     let span=document.createElement("span");
     span.setAttribute("id","span");
-    //span.innerText=`${total}`;
+    
 
     let image=document.createElement("img");
     image.src="https://www.zoomcar.com/build/760ee3019ff287f2caed7e40c92b1ca5.png";
@@ -219,18 +210,41 @@ function showdata(){
     paybtn.style.color="white";
 
     paybtn.addEventListener("click",()=>{
-        // main.innerHTML=`<h1> Your Payment Is Successfull </h1>`;
-        // // main.style.textAlign="center";
-        // main.style.display="flex";
-        // main.style.justifyContent="center";
-        // main.style.alignItems="center";/
-        location.href="OTP.html";
-    //    setTimeout(() => {
-    //     location.href="index.html";
-    //    },2000);
+        let token=localStorage.getItem("token");
+        servercall(total,token);
 
     })
     
     card.append(section1,div2,input2,input3,div4,paybtn);
     mainsection.append(card);
+}
+
+const token=localStorage.getItem("token");
+function servercall(total,token){
+    alert("processing your payment");
+    let amount=total;
+    // let plan="free";
+    // if(amount==299){
+    //     plan="LITE";
+    // }else if(amount==599){
+    //     plan="PRO";
+    // }else{
+    //     plan="PRIMIUM"
+    // }
+    let plan=localStorage.getItem("plan");
+    obj={amount,plan};
+    fetch("https://pink-eagle-coat.cyclic.app/user/sendmail",{
+        method:"POST",
+        headers: {
+            "Content-type":"application/json",
+            "Authorization":`Bearer ${token}`
+        },
+        body:JSON.stringify(obj)
+    },{ mode: 'no-cors'})
+    .then((res)=>{
+        return res.json();
+    })
+    .then((res)=>{
+        location.href="OTP.html";
+    })
 }

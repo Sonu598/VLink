@@ -16,17 +16,19 @@
         </div>
         <div id="verify-otp-div">
             <p id="text">Enter OTP Here</p>
-            <form action="">
-                <input class="inputbox" type="text" maxlength="1" pattern="[0-9]" required>
-                <input class="inputbox" type="text" maxlength="1" pattern="[0-9]" required>
-                <input class="inputbox" type="text" maxlength="1" pattern="[0-9]" required>
-                <input class="inputbox" type="text" maxlength="1" pattern="[0-9]" required>
-                <input class="inputbox" type="text" maxlength="1" pattern="[0-9]" required>
-                <input class="inputbox" type="text" maxlength="1" pattern="[0-9]" required>
+            <form id="otp-form">
+                <input class="inputbox" id="num1" type="text" maxlength="1" pattern="[0-9]" required>
+                <input class="inputbox" id="num2" type="text" maxlength="1" pattern="[0-9]" required>
+                <input class="inputbox" id="num3" type="text" maxlength="1" pattern="[0-9]" required>
+                <input class="inputbox" id="num4" type="text" maxlength="1" pattern="[0-9]" required>
+                <input class="inputbox" id="num5" type="text" maxlength="1" pattern="[0-9]" required>
+                <input class="inputbox" id="num6" type="text" maxlength="1" pattern="[0-9]" required>
                 
             </form>
 
             <button id="verify-btn">Verify OTP</button>
+
+            <h2 id="errmsg"></h2>
 
         </div>
     </div>

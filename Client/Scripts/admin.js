@@ -50,80 +50,80 @@ addButton.addEventListener("click",(e)=>{
           name.placeholder = 'Name';
           addBox.appendChild(name);
 
-          const image = document.createElement('input');
-          image.type = 'text';
-          image.name = 'image';
-          image.placeholder = 'Image URL';
-          addBox.appendChild(image);
+          // const email = document.createElement('input');
+          // image.type = 'text';
+          // image.name = 'image';
+          // image.placeholder = 'Image URL';
+          // addBox.appendChild();
 
-          const price = document.createElement('input');
-          price.type = 'number';
-          price.name = 'price';
-          price.placeholder = 'Price';
-          addBox.appendChild(price);
+          // const password = document.createElement('input');
+          // price.type = 'number';
+          // price.name = 'price';
+          // price.placeholder = 'Price';
+          // addBox.appendChild(price);
 
-          const gender = document.createElement('select');
-          gender.name = 'gender';
+          // const gender = document.createElement('select');
+          // gender.name = 'gender';
 
-          const maleOption = document.createElement('option');
-          maleOption.value = 'male';
-          maleOption.text = 'Male';
-          gender.appendChild(maleOption);
+          // const maleOption = document.createElement('option');
+          // maleOption.value = 'male';
+          // maleOption.text = 'Male';
+          // gender.appendChild(maleOption);
 
-          const femaleOption = document.createElement('option');
-          femaleOption.value = 'female';
-          femaleOption.text = 'Female';
-          gender.appendChild(femaleOption);
+          // const femaleOption = document.createElement('option');
+          // femaleOption.value = 'female';
+          // femaleOption.text = 'Female';
+          // gender.appendChild(femaleOption);
 
-          addBox.appendChild(gender);
+          // addBox.appendChild(gender);
 
-          const strikePrice = document.createElement('input');
-          strikePrice.type = 'number';
-          strikePrice.name = 'strikePrice';
-          strikePrice.placeholder = 'Strike Price';
-          addBox.appendChild(strikePrice);
+          // const strikePrice = document.createElement('input');
+          // strikePrice.type = 'number';
+          // strikePrice.name = 'strikePrice';
+          // strikePrice.placeholder = 'Strike Price';
+          // addBox.appendChild(strikePrice);
 
-          const categorySelect = document.createElement('select');
-          categorySelect.name = 'category';
+          // const categorySelect = document.createElement('select');
+          // categorySelect.name = 'category';
 
-          const categories = ['Shirts', 'Jeans', 'Jackets', 'Hoodie', 'Ethnic', 'T-shirt'];
+          // const categories = ['Shirts', 'Jeans', 'Jackets', 'Hoodie', 'Ethnic', 'T-shirt'];
 
-          categories.forEach(category => {
-            const option = document.createElement('option');
-            option.value = category.toLowerCase();
-            option.text = category;
-            categorySelect.appendChild(option);
-          });
+          // categories.forEach(category => {
+          //   const option = document.createElement('option');
+          //   option.value = category.toLowerCase();
+          //   option.text = category;
+          //   categorySelect.appendChild(option);
+          // });
 
-          addBox.appendChild(categorySelect);
+          // addBox.appendChild(categorySelect);
 
-          const brandInput = document.createElement('input');
-          brandInput.type = 'text';
-          brandInput.name = 'brand';
-          brandInput.placeholder = 'Brand';
-          addBox.appendChild(brandInput);
+          const email = document.createElement('input');
+          email.type = 'text';
+          email.name = 'email';
+          email.placeholder = 'Email';
+          addBox.appendChild(email);
 
-          const ratingInput = document.createElement('input');
-          ratingInput.type = 'text';
-          ratingInput.name = 'rating';
-          ratingInput.placeholder = 'Rating';
-          addBox.appendChild(ratingInput);
+          const passInput = document.createElement('input');
+          passInput.type = 'text';
+          passInput.name = 'rating';
+          passInput.placeholder = 'Password';
+          addBox.appendChild(passInput);
 
-          const colorInput = document.createElement('input');
-          colorInput.type = 'text';
-          colorInput.name = 'color';
-          colorInput.placeholder = 'Color';
-          addBox.appendChild(colorInput);
+          // const colorInput = document.createElement('input');
+          // colorInput.type = 'text';
+          // colorInput.name = 'color';
+          // colorInput.placeholder = 'Color';
+          // addBox.appendChild(colorInput);
 
-          const discountInput = document.createElement('input');
-          discountInput.type = 'text';
-          discountInput.name = 'discount';
-          discountInput.placeholder = 'Discount';
-          addBox.appendChild(discountInput);
+          // const discountInput = document.createElement('input');
+          // discountInput.type = 'text';
+          // discountInput.name = 'discount';
+          // discountInput.placeholder = 'Discount';
+          // addBox.appendChild(discountInput);
 
           const submitButton = document.createElement('button');
           submitButton.type = 'submit';
-          submitButton.textContent = 'Add Product';
+          submitButton.textContent = 'Add Admin';
           addBox.appendChild(submitButton);
 
           submitButton.addEventListener("click",()=>{
@@ -186,7 +186,7 @@ getButton.addEventListener("click",(e)=>{
     fetch("https://stormy-flannel-shirt-ox.cyclic.app/products/1")
         .then((res)=>res.json())
         .then(res=>{
-            console.log(res.product)
+            // console.log(res.product)
             displayData(res.product)
         })
 
@@ -254,7 +254,7 @@ function deleteProduct(id){
             })
             .then((res)=>res.json())
         .then(res=>{
-            console.log(res)
+            // console.log(res)
         })
 
         .catch((err)=>{
@@ -263,189 +263,8 @@ function deleteProduct(id){
   }
 
 
-// ---------------------------------------Update any Products--------------------------------------------
 
-const updateBtn = document.querySelector("#updatenew")
-
-updateBtn.addEventListener("click",(e)=>{
-  e.preventDefault()
-  addBox.innerHTML = ""
-  addBox.setAttribute('id', 'updatepro');
-
-          const ProductID = document.createElement('input')
-          ProductID.type = 'text'
-          ProductID.placeholder = 'Product ID'
-          addBox.appendChild(ProductID)
-          
-
-          const name = document.createElement('input');
-          name.type = 'text';
-          name.name = 'name';
-          name.placeholder = 'Name';
-          addBox.appendChild(name);
-
-          const image = document.createElement('input');
-          image.type = 'text';
-          image.name = 'image';
-          image.placeholder = 'Image URL';
-          addBox.appendChild(image);
-
-          const price = document.createElement('input');
-          price.type = 'number';
-          price.name = 'price';
-          price.placeholder = 'Price';
-          addBox.appendChild(price);
-
-          const gender = document.createElement('select');
-          gender.name = 'gender';
-
-          const maleOption = document.createElement('option');
-          maleOption.value = 'Male';
-          maleOption.text = 'Male';
-          gender.appendChild(maleOption);
-
-          const femaleOption = document.createElement('option');
-          femaleOption.value = 'Female';
-          femaleOption.text = 'Female';
-          gender.appendChild(femaleOption);
-
-          addBox.appendChild(gender);
-
-          const strikePrice = document.createElement('input');
-          strikePrice.type = 'number';
-          strikePrice.name = 'strikePrice';
-          strikePrice.placeholder = 'Strike Price';
-          addBox.appendChild(strikePrice);
-
-          const categorySelect = document.createElement('select');
-          categorySelect.name = 'category';
-
-          const categories = ['Shirts', 'Jeans', 'Jackets', 'Hoodie', 'Ethnic', 'T-shirt'];
-
-          categories.forEach(category => {
-            const option = document.createElement('option');
-            option.value = category.toLowerCase();
-            option.text = category;
-            categorySelect.appendChild(option);
-          });
-
-          addBox.appendChild(categorySelect);
-
-          const brandInput = document.createElement('input');
-          brandInput.type = 'text';
-          brandInput.name = 'brand';
-          brandInput.placeholder = 'Brand';
-          addBox.appendChild(brandInput);
-
-          const ratingInput = document.createElement('input');
-          ratingInput.type = 'text';
-          ratingInput.name = 'rating';
-          ratingInput.placeholder = 'Rating';
-          addBox.appendChild(ratingInput);
-
-          const colorInput = document.createElement('input');
-          colorInput.type = 'text';
-          colorInput.name = 'color';
-          colorInput.placeholder = 'Color';
-          addBox.appendChild(colorInput);
-
-          const discountInput = document.createElement('input');
-          discountInput.type = 'text';
-          discountInput.name = 'discount';
-          discountInput.placeholder = 'Discount';
-          addBox.appendChild(discountInput);
-
-          const getData = document.createElement("button")
-          getData.textContent = "Get the Data"
-          addBox.appendChild(getData)
-
-          getData.addEventListener("click",(e)=>{
-            e.preventDefault()
-              let id = ProductID.value
-            function fetched(id){
-              fetch(`https://stormy-flannel-shirt-ox.cyclic.app/products1/${id}`)
-                  .then((res)=>res.json())
-              .then(res=>{
-                  console.log(res.product)
-
-                  if(res.product==null || res.product==undefined){
-                    alert("Enter correct Product ID")
-                  }else{
-                  name.value = res.product.name
-                  image.value = res.product.image
-                  price.value = res.product.price
-                  gender.value = res.product.gender
-                  strikePrice.value = res.product.strikePrice
-                  categorySelect.value = res.product.category
-                  brandInput.value = res.product.brand
-                  ratingInput.value = res.product.rating
-                  colorInput.value = res.product.color
-                  discountInput.value = res.product.discount
-                  }
-              })
-      
-              .catch((err)=>{
-                  console.log(err)
-                  
-              })
-          }
-          fetched(id)
-          })
-
-          const submitButton = document.createElement('button');
-          submitButton.type = 'submit';
-          submitButton.textContent = 'Update Product';
-          addBox.appendChild(submitButton);
-
-          submitButton.addEventListener("click",()=>{
-            let id = ProductID.value
-
-            let updatedUser = {
-                name : name.value,
-                image : image.value,
-                price : price.value,
-                gender : gender.value,
-                strikePrice : strikePrice.value,
-                categorySelect : categorySelect.value,
-                brand : brandInput.value,
-                rating : ratingInput.value,
-                color : colorInput.value,
-                discount : discountInput.value
-            }
-
-            function updateFetch(id){
-              fetch(`https://stormy-flannel-shirt-ox.cyclic.app/products/update/${id}`,{
-                method : "PATCH",
-                body : JSON.stringify(updatedUser),
-                headers : {
-                  "Content-type":"application/json"
-                }
-              })
-
-              .then((res)=>res.json())
-              .then(res=>{
-                console.log(res)
-                
-                if(res.msg=="Error while updating Product"){
-                  alert("Error while updating Product")
-                }else if(res.msg=="product updated successfully"){
-                  alert("Product updated Successfull")
-                  location.reload()
-                }else{
-                  alert("Product not found")
-                }
-              })
-
-              .catch((err)=>{
-                console.log(err)
-              })
-            }
-            updateFetch(id)
-      })
-})
-
-
-// ---------------------------------------Customer List--------------------------------------------
+// -------------------------ADMIN LIST----------------------------------
 
 const userlist = document.getElementById("customerlist")
 
@@ -468,8 +287,8 @@ userlist.addEventListener("click",(e)=>{
       headerRow.appendChild(createCell('th', 'Username'));
       headerRow.appendChild(createCell('th', 'Email'));
       headerRow.appendChild(createCell('th', 'Gender'));
-      headerRow.appendChild(createCell('th', 'Age'));
-      headerRow.appendChild(createCell('th', 'City'));
+      // headerRow.appendChild(createCell('th', 'Age'));
+      // headerRow.appendChild(createCell('th', 'City'));
       headerRow.appendChild(createCell('th', 'Phone'));
       header.appendChild(headerRow);
       table.appendChild(header);
@@ -478,7 +297,7 @@ userlist.addEventListener("click",(e)=>{
         fetch('https://stormy-flannel-shirt-ox.cyclic.app/users1/')
         .then(res => res.json())
         .then(data => {
-          console.log(data.user)
+          // console.log(data.user)
           displayData(data.user)
       })
         .catch((err)=>{
@@ -497,8 +316,8 @@ userlist.addEventListener("click",(e)=>{
               let username = document.createElement("td")
               let email = document.createElement("td")
               let gender = document.createElement("td")
-              let age = document.createElement("td")
-              let city = document.createElement("td")
+              // let age = document.createElement("td")
+              // let city = document.createElement("td")
               let phone = document.createElement("td")
       
               
@@ -508,12 +327,12 @@ userlist.addEventListener("click",(e)=>{
               username.style.fontWeight = "Bold"
               email.textContent = el.email
               gender.textContent = el.gender
-              age.textContent = el.age
-              city.textContent = el.city
+              // age.textContent = el.age
+              // city.textContent = el.city
               phone.textContent = generateMobileNumber()
           
 
-            row.append(srno,username,email,gender,age,city,phone)
+            row.append(srno,username,email,gender,phone)
             tbody.append(row)
             table.appendChild(tbody)
             
@@ -543,7 +362,7 @@ userlist.addEventListener("click",(e)=>{
 fetch('https://stormy-flannel-shirt-ox.cyclic.app/products/')
         .then(res => res.json())
         .then(data => {
-          console.log(data.product.length)   
+          // console.log(data.product.length)   
           const totalP = document.querySelector("#totalP")
           totalP.innerHTML = data.product.length
       })
@@ -555,7 +374,7 @@ fetch('https://stormy-flannel-shirt-ox.cyclic.app/products/')
 fetch('https://stormy-flannel-shirt-ox.cyclic.app/users/')
         .then(res => res.json())
         .then(data => {
-          console.log(data.user)
+          // console.log(data.user)
           const totalU = document.querySelector("#totalU")
           totalU.innerHTML = data.user.length
       })
@@ -565,8 +384,45 @@ fetch('https://stormy-flannel-shirt-ox.cyclic.app/users/')
 
 
 
+//-----------------------DASHBOARD PAGE [Premium Customers]---------------------------
 
 
+function fetchedUser(){
+  fetch("https://pink-eagle-coat.cyclic.app/paiduser/")
+      .then((res)=>res.json())
+      .then(res=>{
+          console.log(res.data)
+          // displayData(res.data)
+      })
+
+      .catch((err)=>{
+          return err
+      })
+  }
+  fetchedUser()
+
+function displayData(data){
+const tbody = document.querySelector(".details tbody")
+tbody.innerHTML = null;
+
+data.forEach((el)=>{
+
+  let row = document.createElement("tr");
+  let name = document.createElement("td");
+  let price = document.createElement("td");
+  let status = document.createElement("td");
+  let statusInside = document.createElement("span");
+
+  name.textContent = el.name;
+  price.textContent = el.price;
+  statusInside.textContent = el.plan;
+  status.innerHTML = statusInside;
+
+  row.append(name,price,status)
+})
+tbody.append(row)
+}
 
 
+//-----------------------ALL USERS---------------------------
 
