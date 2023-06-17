@@ -221,6 +221,7 @@ function showdata(){
 
 const token=localStorage.getItem("token");
 function servercall(total,token){
+    alert("processing your payment");
     let amount=total;
     // let plan="free";
     // if(amount==299){
@@ -232,14 +233,14 @@ function servercall(total,token){
     // }
     let plan=localStorage.getItem("plan");
     obj={amount,plan};
-    fetch("/user/sendmail",{
+    fetch("https://sore-shoe-bull.cyclic.app/user/sendmail",{
         method:"POST",
         headers: {
-            "content-type":"application/json",
+            "Content-type":"application/json",
             "Authorization":`Bearer ${token}`
         },
         body:JSON.stringify(obj)
-    })
+    },{ mode: 'no-cors'})
     .then((res)=>{
         return res.json();
     })
