@@ -2,6 +2,7 @@
     let s_emailEl=document.getElementById("s-email")
     let s_passEl=document.getElementById("s-pass")
 
+
     const onSignup=()=>{
         const payload={
             name:s_nameEl.value,
