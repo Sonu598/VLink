@@ -9,7 +9,7 @@
             password:s_passEl.value,
         }
         // console.log(payload)
-        fetch("",{
+        fetch("https://pink-eagle-coat.cyclic.app/user/register",{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
@@ -31,7 +31,7 @@
             password:l_passEl.value,
         }
         // console.log(payload)
-        fetch("",{
+        fetch("https://pink-eagle-coat.cyclic.app/user/login",{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
@@ -42,7 +42,7 @@
             console.log(res)
         localStorage.setItem("token",res.token)
         alert(res.msg)
-        window.location.href="Client/Styles/dashboard.html"
+        window.location.href="/Client/plans.html"
     })
         .catch(err=>console.log(err))
     } 

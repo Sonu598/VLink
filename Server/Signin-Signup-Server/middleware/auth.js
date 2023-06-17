@@ -6,8 +6,8 @@ function auth(req,res,next){
         if(token){
             var decoded = jwt.verify(token, 'accesstoken');
             if(decoded){
-                req.body.userID = decoded.userID
-                next()
+                req.body.userID = decoded.userID;
+                next();
             }else{
                 res.status(401).send({"msg":"Invalid User From Middleware auth "})
             }
