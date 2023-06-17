@@ -14,7 +14,7 @@ btn.addEventListener("click",()=>{
     let plan=localStorage.getItem("plan");
     let price=localStorage.getItem("amount");
     let obj={otp,plan,price};
-    fetch("https://sore-shoe-bull.cyclic.app/user/verify",{
+    fetch("https://pink-eagle-coat.cyclic.app/user/verify",{
         method:"POST",
         headers:{
             "Content-type":"application/json"
