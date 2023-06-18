@@ -51,6 +51,40 @@ input{
     outline: none;
     border-radius: 5px;
 }
+#s-submit{
+    width:60%;
+    height:40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #0a6dee;
+    font-size: 1em;
+    font-weight:bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+#l-submit{
+    width:60%;
+    height:40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #0a6dee;
+    font-size: 1em;
+    font-weight:bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
 button{
     width:60%;
     height:40px;
@@ -69,6 +103,12 @@ button{
     cursor: pointer;
 }
 button:hover{
+    background: #4469b8;
+}
+#s-submit:hover{
+    background: #4469b8;
+}
+#l-submit:hover{
     background: #4469b8;
 }
 .login{

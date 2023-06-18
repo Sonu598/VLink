@@ -11,20 +11,20 @@
     <div class="main">
         <input type="checkbox" id="chk" aria-hidden="true">
         <div class="signup">
-            <form>
+            <form id="signUp_form">
                 <label for="chk" aria-hidden="true">Sign up</label>
                 <input type="text" name="txt" id="s-name" placeholder="User name" required="">
                 <input type="email" name="email" id="s-email" placeholder="Email" required="">
                 <input type="Password" name="pswd" id="s-pass" placeholder="Password" required="">
-                <button onclick="event.preventDefault();onSignup()">Sign up</button>
+                <input type="submit" id="s-submit" value="Sign up">
             </form>
         </div>
         <div class="login">
-           <form>
+           <form id="login_form">
             <label for="chk" aria-hidden="true">Login</label>
             <input type="email" name="email" id="l-email" placeholder="Email" required="">
             <input type="Password" name="pswd" id="l-pass" placeholder="Password" required="">
-                <button onclick="event.preventDefault();onLogin()">Login</button>
+            <input type="submit" id="l-submit" value="Login">
             <img src="/Client/Images/google_auth.png" id="G_auth" alt="error">
             <a id="forgot" href="./forgot_password.html"><p>Forgot Password</p></a>
            </form> 
