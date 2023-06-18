@@ -1,4 +1,4 @@
-const BASE_SERVER_URL = "http://localhost:2015/"
+const BASE_SERVER_URL = "vlinkvideoserver-production.up.railway.app"
 //******************    ******************//
 new AWN().asyncBlock(
     fetch(`${BASE_SERVER_URL}/start`),

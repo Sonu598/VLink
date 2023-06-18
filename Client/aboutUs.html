@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="./Styles/aboutUs.css">
     <title>VLink | About Us</title>
 </head>
 
 <body>
     <div id="main">
-        <nav></nav>
-
+        <header></header>
         <div class="mainContainer">
             <div class="intro">
                 <h1>What is VLink</h1>
@@ -97,27 +97,27 @@
         <h1>Meet Our Developers</h1>
         <div class="allDevelopers">
             <a href="" class="singleDev">
-                <img src="../images/Anshita.jpeg" alt="Dharamveer">
+                <img src="./Images/WhatsApp Image 2023-06-15 at 14.25.11.jpg" alt="Dharamveer">
                 <h2>Dharamveer</h2>
             </a>
 
             <a href="" class="singleDev">
-                <img src="../images/nitish_pic.jpg" alt="Yogita">
+                <img src="./Images/DSC_2599.JPG" alt="Yogita">
                 <h2>Yogita</h2>
             </a>
 
             <a href="" class="singleDev">
-                <img src="../images/Aashik_pic.jpeg" alt="sambhaji">
+                <img src="./Images/profile pic2.jpg" alt="sambhaji">
                 <h2>Sambhaji</h2>
             </a>
         </div>
         <div class="allDevelopers">
             <a href="" class="singleDev">
-                <img src="../images/binod_pic.jpeg" alt="Sayali">
+                <img src="./Images/profile.png" alt="Sayali">
                 <h2>Sayali</h2>
             </a>
             <a href="" class="singleDev">
-                <img src="../images/ishuPriya_pic.jpeg" alt="Ishupriya">
+                <img src="./Images/df7.jpg" alt="Ishupriya">
                 <h2>Ishupriya</h2>
             </a>
         </div>
@@ -125,6 +125,17 @@
 
     <footer></footer>
 </body>
-<script src="../Scripts/aboutUs.js"></script>
+<script src="./Scripts/aboutUs.js"></script>
 
 </html>
+<script>
+    $(function () {
+        $('header').load('nav.html');
+    }) 
+  </script>
+  
+  <script>
+    $(function () {
+        $('footer').load('footer.html');
+    }) 
+  </script>

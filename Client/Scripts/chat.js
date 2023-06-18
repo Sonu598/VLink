@@ -7,11 +7,11 @@ const urlParams = new URLSearchParams(window.location.search)
 
 const room = urlParams.get("roomID");
 console.log(room);
-const username = JSON.parse(localStorage.getItem("userDetails")).name;
+const userData = JSON.parse(localStorage.getItem("userInfo"));
 // const username = "Aman"
+const username=userData.name;
 
-
-const socket = io("http://localhost:2015/", { transports: ["websocket"] });
+const socket = io("vlinkvideoserver-production.up.railway.app", { transports: ["websocket"] });
 
 socket.emit("joinRoom", ({ username, room }));
 
@@ -100,7 +100,7 @@ document.getElementById('leave').addEventListener("click", ()=>{
 
 async function userLoggedIn() {
     const token = localStorage.getItem("token");
-    const request = await fetch(`http://localhost:2015/user/check`,{
+    const request = await fetch(`vlinkvideoserver-production.up.railway.app/user/check`,{
       method:"POST",
       headers:{
         "content-type":"application/json",

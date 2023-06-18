@@ -3,7 +3,7 @@ const btn2=document.getElementById("lite-plan");
 const btn3=document.getElementById("pro-plan");
 const btn4=document.getElementById("premium-plan");
 btn1.addEventListener("click",()=>{
-    window.location.href="index.html";
+    window.location.href="dashboard.html";
 });
 
 btn2.addEventListener("click",()=>{

@@ -1,7 +1,7 @@
 const joinRoom = document.getElementById("join-room")
 const create = document.getElementById("create-room")
 const title = document.getElementById("title")
-const BASE_SERVER_URL = "http://localhost:2015"
+const BASE_SERVER_URL = "vlinkvideoserver-production.up.railway.app"
 
 const urlParams = new URLSearchParams(window.location.search)
 const type = urlParams.get("type"); //remove later 
@@ -21,7 +21,7 @@ create.addEventListener("click", () => {
 
         try {
             const room = Math.floor(Math.random() * 900) + 100
-            const request = await fetch(`http://localhost:2015/room/create`, {
+            const request = await fetch(`vlinkvideoserver-production.up.railway.app/room/create`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"

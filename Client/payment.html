@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <link rel="stylesheet" href="./Styles/payment.css">
 </head>
 <body>
+    <header></header>
     <h1 id="plan-amt"></h1>
     <div id="cont">
         <div id="main">
@@ -104,7 +106,18 @@
                 </div>
             </div>
         </div>
-    
+        <footer style="margin-top: 100px;"></footer>
 </body>
 <script src="./Scripts/payment.js"></script>
 </html>
+<script>
+    $(function () {
+        $('header').load('nav.html');
+    }) 
+  </script>
+  
+  <script>
+    $(function () {
+        $('footer').load('footer.html');
+    }) 
+  </script>
