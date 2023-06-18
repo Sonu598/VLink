@@ -1,4 +1,4 @@
-# VLink - Real Time Screen Sharing Chat Application
+# VLink - Real Time Video and Chat Application
 
 ![Vlink](./Client/Images/logo.jpg)
 
