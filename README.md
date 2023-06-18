@@ -4,7 +4,7 @@
 
 # VLink - Real Time Video and Chat Application
 
-**VLink is a communications platform that allows users to connect with video, audio, screen share, and chat.**
+**VLink is a communications platform that allows users to connect with video, audio and chat.**
 **The power of collaboration is that it can turn a group of individuals into a team empowered to achieve great things
 Vlink is a type of application that enables users to share their computer screens with others in real-time over the internet.
 It includes features that allows user to chat and video call with each other.**
