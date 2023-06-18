@@ -1,8 +1,8 @@
-# VLink - Real Time Screen Sharing Chat Application
+# VLink - Real Time Video and Chat Application
 
 ![Vlink](./Client/Images/logo.jpg)
 
-# VLink - Real Time Screen Sharing Chat Application
+# VLink - Real Time Video and Chat Application
 
 **VLink is a communications platform that allows users to connect with video, audio, screen share, and chat.**
 **The power of collaboration is that it can turn a group of individuals into a team empowered to achieve great things
