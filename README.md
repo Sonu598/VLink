@@ -93,8 +93,6 @@ It includes features that allows user to chat and video call with each other.**
    > - e-Mail: maneyogita2021@gmail.com
    > - GitHub: https://github.com/Yogita2021
 
-GitHub: https://github.com/shaikhshahbaz4022/chummy-run-6992
-
 <br>
 
 ## Home Page
@@ -114,14 +112,6 @@ GitHub: https://github.com/shaikhshahbaz4022/chummy-run-6992
 ![Screenshot]()
 
 ## Dashboard Page
-
-![Screenshot]()
-
-## Dashboard Page
-
-![Screenshot]()
-
-## Room Platform
 
 ![Screenshot]()
 
