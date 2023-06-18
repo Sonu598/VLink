@@ -42,6 +42,9 @@
         .then(res=>{
             console.log(res)
         localStorage.setItem("token",res.token)
+        let user=res.user
+        user.type="free"
+        localStorage.setItem("userInfo",JSON.stringify(user))
         alert(res.msg)
         window.location.href="/Client/plans.html"
     })
