@@ -6,10 +6,10 @@
 
 **VLink is a communications platform that allows users to connect with video, audio, screen share, and chat.**
 **The power of collaboration is that it can turn a group of individuals into a team empowered to achieve great things
-Vlink is a type of application that enables users to share their computer screens with others in real-time over the internet.
+Vlink is a type of application that enables users to connect with others in real-time over the internet.
 It includes features that allows user to chat and video call with each other.**
 
-## Deployment Link -
+## Deployment Link - https://vlink-webapp.netlify.app
 
 ## Tech Stack
 
@@ -93,42 +93,28 @@ It includes features that allows user to chat and video call with each other.**
    > - e-Mail: maneyogita2021@gmail.com
    > - GitHub: https://github.com/Yogita2021
 
-GitHub: https://github.com/shaikhshahbaz4022/chummy-run-6992
-
 <br>
 
 ## Home Page
 
-![Screenshot (719)]()
-
-## Footer Page
-
-![Footer]()
+![Screenshot (719)](./Client/Images/indexPage.png)
 
 ## Signing Page
 
-![Screenshot (722)]()
-
-## Login Page
-
-![Screenshot]()
+![Screenshot (722)](./Client/Images/signUpLogin.png)
 
 ## Dashboard Page
 
-![Screenshot]()
-
-## Dashboard Page
-
-![Screenshot]()
-
-## Room Platform
-
-![Screenshot]()
+![Screenshot](./Client/Images/dashbordPage.png)
 
 ## Video Chat Platform
 
-![Screenshot]()
+![Screenshot](./Client/Images/videoRoom.png)
 
 ## Chat Platform
 
-![Screenshot]()
+![Screenshot](./Client/Images/chat.png)
+
+## Admin Dashboard Page
+
+![Screenshot](./Client/Images/adminDashboard.png)
