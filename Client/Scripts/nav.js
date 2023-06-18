@@ -15,7 +15,7 @@ if(userInfo){
     let div = document.getElementById("signUpY")
 
     div.addEventListener("click" , ()=>{
-        window.location.href = "./pages/signin.html"
+        window.location.href = "./login_signup.html"
     })
 	div.style.color="white"
 }

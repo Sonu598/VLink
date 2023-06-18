@@ -15,12 +15,13 @@ btn.addEventListener("click",()=>{
     let plan=localStorage.getItem("plan");
     let price=localStorage.getItem("amount");
     let obj={otp,plan,price};
+    const token=localStorage.getItem('token');
     fetch("https://pink-eagle-coat.cyclic.app/user/verify",{
         //  mode: 'no-cors',
         method:"POST",
         headers:{
-            "Content-type":"application/json"
-            
+            "Content-type":"application/json",
+            "authorization":`bearer ${token}`
         },
         body:JSON.stringify(obj)
         
