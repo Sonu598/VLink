@@ -1,4 +1,4 @@
-const BASE_SERVER_URL = "vlinkvideoserver-production.up.railway.app"
+const BASE_SERVER_URL = "https://vlink-backend.onrender.com"
 //******************    ******************//
 new AWN().asyncBlock(
     fetch(`${BASE_SERVER_URL}/start`),
