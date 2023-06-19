@@ -140,6 +140,9 @@ transform: scale(.6);
     border-radius: 5px;
 }
 #Git_auth{
+    text-decoration: none;
+}
+#Git_auth>img{
     width:60%;
     height:30px;
     margin: 10px auto;

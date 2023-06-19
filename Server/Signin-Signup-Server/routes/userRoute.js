@@ -11,6 +11,7 @@ const {PaidModel}=require("../model/paidUserModel");
 
 const userRouter = express.Router()
 
+
 userRouter.post("/register", async (req, res) => {
     const { name, email, password } = req.body
 
