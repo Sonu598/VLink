@@ -74,7 +74,15 @@ function outputMessage(message) {
 
     p.innerText = message.username;
 
-    p.innerHTML += `<span> ${message.time}</span>`;
+    let currentDate = new Date();
+    let currentHours = currentDate.getHours();
+    let currentMinutes = currentDate.getMinutes();
+
+
+    currentHours = (currentHours < 10 ? "0" : "") + currentHours;
+    currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+
+    p.innerHTML += `<span> ${currentHours}:${currentMinutes}</span>`;
 
     div.appendChild(p);
 

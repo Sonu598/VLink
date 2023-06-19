@@ -78,8 +78,12 @@
         localStorage.setItem("token",res.token)
         let user=res.user
         localStorage.setItem("userInfo",JSON.stringify(user))
-        alert(res.msg)
-        window.location.href="/Client/plans.html"
+        if(res.msg=="login success"){
+            alert("login successful");
+            window.location.href="./plan.html"
+        }else{
+            alert("Wrong Credintials");
+        }
     })
         .catch(err=>console.log(err))
     })

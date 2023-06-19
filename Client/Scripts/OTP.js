@@ -31,8 +31,8 @@ btn.addEventListener("click",()=>{
        return res.json();
     })
     .then((data)=>{
-        alert(data.msg);
         if(data.msg){
+            alert('Payment Successfull')
             window.location.href="/Client/dashboard.html"
         }else{
             h2.innerText="WRONG OTP";

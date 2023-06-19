@@ -31,3 +31,10 @@ window.addEventListener("load", () => {
 });
 
 
+const logoutbtn = document.getElementById("logout");
+
+logoutbtn.addEventListener("click",()=>{
+	localStorage.clear("token");
+	localStorage.clear("userInfo");
+	window.location.href="./index.html";
+})
