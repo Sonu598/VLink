@@ -72,6 +72,32 @@ userRouter.post("/logout", async (req, res) => {
 });
 
 
+userRouter.post("/forgotpassword",validation, async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await UserModel.findOne({ email });
+
+        if (!user) {
+            return res.status(400).send({ "error": "User not found. Please provide a valid registered email." });
+        }
+
+        bcrypt.hash(password, 5, async (err, hash) => {
+            if (err) {
+                return res.status(500).send({ "error": "Internal server error" });
+            }
+
+            user.password = hash;
+            await user.save();
+
+            res.status(200).send({ "msg": "Password has been successfully updated." });
+        });
+    } catch (error) {
+        res.status(500).send({ "error": "Internal server error" });
+    }
+});
+
+
 // generate otp and send to client and also store it in redis.
 
 
