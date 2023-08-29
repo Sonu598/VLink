@@ -8,10 +8,11 @@ const {transporter}=require("../middleware/nodemailer");
 const {client}=require("../connection/redis");
 const {auth} = require("../middleware/auth");
 const {PaidModel}=require("../model/paidUserModel");
+const {validation}=require("../middleware/user.validation.middleware");
 
 const userRouter = express.Router()
 
-userRouter.post("/register", async (req, res) => {
+userRouter.post("/register",validation, async (req, res) => {
     const { name, email, password } = req.body
 
     try {
@@ -33,7 +34,7 @@ userRouter.post("/register", async (req, res) => {
 })
 
 
-userRouter.post("/login", async (req, res) => {
+userRouter.post("/login",validation, async (req, res) => {
     const { email, password } = req.body
 
     try {
@@ -42,7 +43,6 @@ userRouter.post("/login", async (req, res) => {
             bcrypt.compare(password, user.password, function (err, result) {
                 if (result) {
                     let accesstoken = jwt.sign({ "userID": user._id }, 'accesstoken', { expiresIn: "7d" });
-
 
                     res.status(201).send({ "msg": "login success", "token": accesstoken, "user":user })
 
@@ -68,6 +68,32 @@ userRouter.post("/logout", async (req, res) => {
         res.status(201).send({ "msg": "Logout SuccesFully" })
     } catch (error) {
         res.status(401).send({ "msg": error.message })
+    }
+});
+
+
+userRouter.post("/forgotpassword",validation, async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await UserModel.findOne({ email });
+
+        if (!user) {
+            return res.status(400).send({ "error": "User not found. Please provide a valid registered email." });
+        }
+
+        bcrypt.hash(password, 5, async (err, hash) => {
+            if (err) {
+                return res.status(500).send({ "error": "Internal server error" });
+            }
+
+            user.password = hash;
+            await user.save();
+
+            res.status(200).send({ "msg": "Password has been successfully updated." });
+        });
+    } catch (error) {
+        res.status(500).send({ "error": "Internal server error" });
     }
 });
 

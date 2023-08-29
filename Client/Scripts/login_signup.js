@@ -32,7 +32,7 @@
             password:s_passEl.value,
         }
         // console.log(payload)
-        fetch("https://pink-eagle-coat.cyclic.app/user/register",{
+        fetch("https://vlink-1fh2.onrender.com/user/register",{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
@@ -66,7 +66,7 @@
             password:l_passEl.value,
         }
         // console.log(payload)
-        fetch("https://pink-eagle-coat.cyclic.app/user/login",{
+        fetch("https://vlink-1fh2.onrender.com/user/login",{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
@@ -80,7 +80,7 @@
         localStorage.setItem("userInfo",JSON.stringify(user))
         if(res.msg=="login success"){
             alert("login successful");
-            window.location.href="./plan.html"
+            window.location.href="./plans.html"
         }else{
             alert("Wrong Credintials");
         }
