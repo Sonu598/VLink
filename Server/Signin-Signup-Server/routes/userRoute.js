@@ -8,10 +8,11 @@ const {transporter}=require("../middleware/nodemailer");
 const {client}=require("../connection/redis");
 const {auth} = require("../middleware/auth");
 const {PaidModel}=require("../model/paidUserModel");
+const {validation}=require("../middleware/user.validation.middleware");
 
 const userRouter = express.Router()
 
-userRouter.post("/register", async (req, res) => {
+userRouter.post("/register",validation, async (req, res) => {
     const { name, email, password } = req.body
 
     try {
@@ -33,7 +34,7 @@ userRouter.post("/register", async (req, res) => {
 })
 
 
-userRouter.post("/login", async (req, res) => {
+userRouter.post("/login",validation, async (req, res) => {
     const { email, password } = req.body
 
     try {
@@ -42,7 +43,6 @@ userRouter.post("/login", async (req, res) => {
             bcrypt.compare(password, user.password, function (err, result) {
                 if (result) {
                     let accesstoken = jwt.sign({ "userID": user._id }, 'accesstoken', { expiresIn: "7d" });
-
 
                     res.status(201).send({ "msg": "login success", "token": accesstoken, "user":user })
 
