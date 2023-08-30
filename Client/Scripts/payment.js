@@ -184,7 +184,7 @@ function showdata(){
     let input2=document.createElement("input");
     input2.setAttribute("id","input2");
     input2.setAttribute("placeholder","Expiry (MM/YY)");
-    input2.setAttribute("type","number");
+    input2.setAttribute("type","text");
 
     let input3=document.createElement("input");
     input3.setAttribute("id","input3");
@@ -209,17 +209,59 @@ function showdata(){
     paybtn.innerText=`PAY ₹ ${total}` ;
     paybtn.style.color="white";
 
-    paybtn.addEventListener("click",()=>{
-        let token=localStorage.getItem("token");
-        servercall(total,token);
+    //------------- Added validation functions for card payment---------------
 
+    function cardNumberValidate(){
+        var pattern = /^\d{12}$/;
+
+        if(pattern.test(input1.value)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function validateDate() {
+        const pattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+      
+        if (pattern.test(input2.value)) {
+          return true; 
+        } else {
+          return false; 
+        }
+    }
+
+    function validateCVV(){
+        const pattern = /^\d{3}$/;
+
+        if (pattern.test(input3.value)) {
+            return true; 
+          } else {
+            return false; 
+          }
+    }
+
+    paybtn.addEventListener("click",()=>{
+        if(!cardNumberValidate()){
+            alert("Please enter valid card number")
+        }else if(!validateDate()){
+            alert("Please enter valid date. E.g. 08/25")
+        }else if(!validateCVV()){
+            alert("Please enter valid CVV")
+        }
+        else{
+            let token=localStorage.getItem("token");
+            servercall(total,token);
+        }
     })
-    
+    //---------------------------------------------------------------------------
+     
     card.append(section1,div2,input2,input3,div4,paybtn);
     mainsection.append(card);
 }
 
 const token=localStorage.getItem("token");
+
 function servercall(total,token){
     alert("processing your payment");
     let amount=total;
@@ -229,7 +271,7 @@ function servercall(total,token){
     // }else if(amount==599){
     //     plan="PRO";
     // }else{
-    //     plan="PRIMIUM"
+    //     plan="PREMIUM";
     // }
     let plan=localStorage.getItem("plan");
     obj={amount,plan};
