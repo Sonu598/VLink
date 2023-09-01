@@ -34,6 +34,9 @@ userRouter.post("/register",validation, async (req, res) => {
 })
 
 
+
+
+
 userRouter.post("/login",validation, async (req, res) => {
     const { email, password } = req.body
 
