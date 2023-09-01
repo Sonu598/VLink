@@ -50,7 +50,7 @@ userRouter.post("/login",validation, async (req, res) => {
                     res.status(201).send({ "msg": "login success", "token": accesstoken, "user":user })
 
                 } else {
-                    res.status(401).send({ "msg": "wrong input,login failed ,User already exist, please login" })
+                    res.status(401).send({ "msg": "Wrong input. Please check your credentials." })
                 }
             });
         } else {
