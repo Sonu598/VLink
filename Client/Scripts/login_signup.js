@@ -41,7 +41,41 @@
         }).then(res=>res.json())
         .then(res=>{
             console.log(res)
-            alert(res.msg)
+            // alert(res.msg)
+            if(res.msg=="Registration Succesfull"){
+                swal.fire({
+                    icon: 'success',
+                    title: 'Registration Succesful!',
+                    text: 'You are now successfully Registerd.',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK'
+                });
+                window.location.href="./plans.html"
+            }else if (res.msg==="Weak password. Passwords must be at least 8 characters long and contain at least one letter, one number, and may include special characters like !@#$%^&*()_+."){
+                swal.fire({
+                    icon: 'warning',
+                    title: 'Weak password.',
+                    text: 'Passwords must be at least 8 characters long and should contain at least one letter, one number and one special characters like !@#$%^&*()_+.',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK'
+                });
+            }else if (res.msg==="Login Directly"){
+                swal.fire({
+                    icon: 'warning',
+                    title: 'Login Directly',
+                    text: 'You are already registerd.',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: 'Invalid credentials. Please try again.',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK'
+                });
+            }
             SrefreshForm();
         })
         .catch(err=>console.log(err))
@@ -79,66 +113,25 @@
         let user=res.user
         localStorage.setItem("userInfo",JSON.stringify(user))
         if(res.msg=="login success"){
-            // alert("login successful");
-            showSuccessAlertAndRedirect()
-            // window.location.href="./plans.html"
+            swal({
+                icon: 'success',
+                title: 'Login Successful!',
+                text: 'You are now logged in.',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
+            window.location.href="./plans.html"
         }else{
-            // alert("Wrong Credintials");
-            showErrorAlert()
+            swal({
+                icon: 'error',
+                title: 'Login Failed',
+                text: 'Invalid credentials. Please try again.',
+                showConfirmButton: true,
+                confirmButtonText: 'OK'
+            });
         }
 
     })
         .catch(err=>console.log(err))
     })
-
-// Invoked when login successfull----------------------------------
-    function showSuccessAlertAndRedirect() {
-        Swal.fire({
-          icon: 'success',
-          title: 'Login Successful!',
-          text: 'You are now logged in.',
-          showConfirmButton: true,
-          confirmButtonText: 'OK'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.href = './plans.html';
-          }
-        });
-      }
-
-// Invoked when wrong credentials-------------------------------------
-      function showErrorAlert() {
-        Swal.fire({
-          icon: 'error',
-          title: 'Login Failed',
-          text: 'Invalid credentials. Please try again.',
-          showConfirmButton: true,
-          confirmButtonText: 'OK'
-        });
-      }
-    
-    // const onLogin=()=>{
-    //     const payload={
-    //         email:l_emailEl.value,
-    //         password:l_passEl.value,
-    //     }
-    //     // console.log(payload)
-    //     fetch("https://pink-eagle-coat.cyclic.app/user/login",{
-    //         method:"POST",
-    //         headers:{
-    //             "Content-type":"application/json"
-    //         },
-    //         body:JSON.stringify(payload)
-    //     }).then(res=>res.json())
-    //     .then(res=>{
-    //         console.log(res)
-    //     localStorage.setItem("token",res.token)
-    //     let user=res.user
-    //     user.type="free"
-    //     localStorage.setItem("userInfo",JSON.stringify(user))
-    //     alert(res.msg)
-    //     window.location.href="/Client/plans.html"
-    // })
-    //     .catch(err=>console.log(err))
-    // } 
     
