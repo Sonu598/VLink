@@ -3,27 +3,6 @@
     let s_passEl=document.getElementById("s-pass")
     const signInform=document.getElementById("signUp_form")
 
-    // const onSignup=()=>{
-    //     const payload={
-    //         name:s_nameEl.value,
-    //         email:s_emailEl.value,
-    //         password:s_passEl.value,
-    //     }
-    //     // console.log(payload)
-    //     fetch("https://pink-eagle-coat.cyclic.app/user/register",{
-    //         method:"POST",
-    //         headers:{
-    //             "Content-type":"application/json"
-    //         },
-    //         body:JSON.stringify(payload)
-    //     }).then(res=>res.json())
-    //     .then(res=>{
-    //         console.log(res)
-    //         alert(res.msg)
-    //     })
-    //     .catch(err=>console.log(err))
-    // }
-
     signInform.addEventListener("submit",(event)=>{
         event.preventDefault();
         const payload={
@@ -83,14 +62,10 @@
 
     function SrefreshForm() {
         signInform.reset();
-      }
+    }
       
-
-
     let l_emailEl=document.getElementById("l-email")
     let l_passEl=document.getElementById("l-pass")
-
-
     let loginForm=document.getElementById("login_form")
 
     loginForm.addEventListener("submit",(event)=>{
@@ -113,16 +88,16 @@
         let user=res.user
         localStorage.setItem("userInfo",JSON.stringify(user))
         if(res.msg=="login success"){
-            swal({
+            swal.fire({
                 icon: 'success',
                 title: 'Login Successful!',
                 text: 'You are now logged in.',
                 showConfirmButton: true,
                 confirmButtonText: 'OK'
             });
-            window.location.href="./plans.html"
+            window.location.href="../plans.html"
         }else{
-            swal({
+            swal.fire({
                 icon: 'error',
                 title: 'Login Failed',
                 text: 'Invalid credentials. Please try again.',
