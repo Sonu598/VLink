@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Policies & Terms</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="./Styles/aboutUs.css" />
+  </head>
+  <body>
+    <div id="main">
+      <header></header>
+      <div class="mainContainer">
+        <div class="intro">
+          <h1>What is VLink</h1>
+          <p>
+            VLink has been developed to provide a powerful and feature-rich
+            real-time meeting to its users. This website allows multiple users
+            to collaborate and video meet in real-time, enhancing productivity
+            and efficiency in teams, especially in remote and distributed
+            settings.
+          </p>
+        </div>
+        <h1 class="reveal" style="color: rgb(11, 129, 255)">
+          Our Policies & Terms
+        </h1>
+        <div class="reveal dropdown-style-functionality left">
+          <section>
+            <h2>Privacy Policy</h2>
+            <p>
+              <strong>Data Collection:</strong> We collect personal details such
+              as name, email, phone number, and payment information for
+              subscription processing. Payments are securely handled via
+              Razorpay.
+            </p>
+            <p>
+              <strong>Data Usage:</strong> We use your data for account
+              management, billing, and support. We do not sell or share data
+              except for legal or security compliance.
+            </p>
+            <p>
+              <strong>Security:</strong> We implement SSL encryption and secure
+              authentication to protect user data.
+            </p>
+            <p>
+              <strong>User Rights:</strong> Users can request data deletion or
+              update their details from their account settings.
+            </p>
+          </section>
+        </div>
+
+        <div class="reveal dropdown-style-functionality right">
+          <section>
+            <h2>Terms & Conditions</h2>
+            <p>
+              <strong>Subscription Plans:</strong> Free (Rs 0), Lite (Rs
+              299/month), Pro (Rs 599/month), Premium (Rs 999/month).
+            </p>
+            <p>
+              <strong>Payment Processing:</strong> Payments are processed
+              securely via Razorpay. Subscriptions are billed in advance and
+              auto-renewed.
+            </p>
+            <p>
+              <strong>Usage Guidelines:</strong> Users must comply with our
+              community guidelines. Violations may lead to account suspension.
+            </p>
+            <p>
+              <strong>Limitation of Liability:</strong> We are not responsible
+              for service interruptions beyond our control.
+            </p>
+          </section>
+        </div>
+
+        <div class="reveal dropdown-style-functionality left">
+          <section>
+            <h2>Cancellation & Refund Policy</h2>
+            <p>
+              <strong>Subscription Cancellation:</strong> Users can cancel
+              subscriptions anytime, with access retained until the end of the
+              billing cycle.
+            </p>
+            <p>
+              <strong>Refund Policy:</strong> Payments are non-refundable.
+              Upgrades take effect immediately; downgrades apply from the next
+              billing cycle.
+            </p>
+            <p>
+              <strong>Disputed Transactions:</strong> Chargebacks without prior
+              communication may lead to account suspension. Contact support
+              within 7 days for payment issues.
+            </p>
+          </section>
+        </div>
+
+        <div class="reveal dropdown-style-functionality right">
+          <section>
+            <h2>Shipping & Delivery Policy</h2>
+            <p>
+              <strong>Digital Product Delivery:</strong> Our service is entirely
+              digital, and no physical shipping is required.
+            </p>
+            <p>
+              <strong>Subscription Activation:</strong> Paid plans activate
+              instantly upon successful payment. Contact support if delays
+              occur.
+            </p>
+            <p>
+              <strong>Service Availability:</strong> Our platform is accessible
+              24/7, except during maintenance.
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer style="margin-top: 100px"></footer>
+  </body>
+</html>
+<script>
+  $(function () {
+    $("header").load("nav.html");
+  });
+</script>
+
+<script>
+  $(function () {
+    $("footer").load("footer.html");
+  });
+</script>
+<script>
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  // let userInfo = null
+  if (userInfo) {
+    console.log(userInfo);
+
+    let name = userInfo.name.split(" ")[0];
+    let div = document.getElementById("signUpY");
+    let div2 = document.getElementById("aboutY");
+    div.innerHTML = name;
+    div.style.color = "white";
+
+    div.addEventListener("click", () => {
+      window.location.href = "./profile.html";
+    });
+    div2.addEventListener("click", () => {
+      window.location.href = "./dashboard.html";
+    });
+  } else {
+    let div = document.getElementById("signUpY");
+    let div2 = document.getElementById("aboutY");
+    div.addEventListener("click", () => {
+      window.location.href = "./login_signup.html";
+    });
+    div2.addEventListener("click", () => {
+      alert("You have to login first");
+    });
+    div.style.color = "white";
+  }
+</script>
+
+<script src="./Scripts/aboutUs.js"></script>
