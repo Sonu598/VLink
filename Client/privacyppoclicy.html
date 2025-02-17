@@ -54,7 +54,7 @@
             <h2>Terms & Conditions</h2>
             <p>
               <strong>Subscription Plans:</strong> Free (Rs 0), Lite (Rs
-              299/month), Pro (Rs 599/month), Premium (Rs 999/month).
+              9/month), Pro (Rs 19/month), Premium (Rs 29/month).
             </p>
             <p>
               <strong>Payment Processing:</strong> Payments are processed
@@ -132,11 +132,9 @@
   // let userInfo = null
   if (userInfo) {
     console.log(userInfo);
-
-    let name = userInfo.name.split(" ")[0];
     let div = document.getElementById("signUpY");
     let div2 = document.getElementById("aboutY");
-    div.innerHTML = name;
+    div.innerHTML = userInfo;
     div.style.color = "white";
 
     div.addEventListener("click", () => {

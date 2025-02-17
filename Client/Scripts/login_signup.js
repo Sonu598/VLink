@@ -20,8 +20,6 @@ signInform.addEventListener("submit", (event) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
-      // alert(res.msg)
       if (res.msg == "Registration Succesfull") {
         swal.fire({
           icon: "success",
@@ -30,7 +28,7 @@ signInform.addEventListener("submit", (event) => {
           showConfirmButton: true,
           confirmButtonText: "OK",
         });
-        window.location.href = "./plans.html";
+        window.location.href = "./login_signup.html";
       } else if (
         res.msg ===
         "Weak password. Passwords must be at least 8 characters long and contain at least one letter, one number, and may include special characters like !@#$%^&*()_+."
@@ -38,7 +36,7 @@ signInform.addEventListener("submit", (event) => {
         swal.fire({
           icon: "warning",
           title: "Weak password.",
-          text: "Passwords must be at least 8 characters long and should contain at least one letter, one number and one special characters like !@#$%^&*()_+.",
+          text: "Passwords must be at least 8 characters. Must contain at least 1 letter, 1 number and 1 special character.",
           showConfirmButton: true,
           confirmButtonText: "OK",
         });
@@ -91,7 +89,7 @@ loginForm.addEventListener("submit", (event) => {
       //console.log(res)
       localStorage.setItem("token", res.token);
       let user = res.user;
-      localStorage.setItem("userInfo", JSON.stringify(user));
+      localStorage.setItem("userInfo", JSON.stringify(user.name));
       if (res.msg == "login success") {
         swal.fire({
           icon: "success",

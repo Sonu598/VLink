@@ -117,7 +117,7 @@ fetch("https://vlink-auth-server.onrender.com/paiduser/total-earning")
 //-----------------------DASHBOARD PAGE [Premium Customers]---------------------------
 
 function fetchedUser() {
-  fetch("https://vlink-auth-server.onrender.com/paiduser/")
+  fetch("https://vlink-auth-server.onrender.com/paiduser")
     .then((res) => res.json())
     .then((res) => {
       // console.log(res.data)

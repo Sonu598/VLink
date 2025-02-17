@@ -146,56 +146,60 @@
     <div id="footerY">
       <h1>Ready to get started?</h1>
       <div>
-        <button id="signin_f">Sign Up,It's Free</button> <button id="plan_f">Plans & Pricing</button>
+        <button id="signin_f">Sign Up,It's Free</button>
+        <button id="plan_f">Plans & Pricing</button>
       </div>
     </div>
-    <footer  style="margin-top: 100px;"></footer>
+    <footer style="margin-top: 100px"></footer>
   </body>
   <!-- <script src="./Scripts/indexpage.js"></script> -->
 </html>
 <script>
   $(function () {
-      $('header').load('nav.html');
-  }) 
+    $("header").load("nav.html");
+  });
 </script>
 
 <script>
   $(function () {
-      $('footer').load('footer.html');
-  }) 
+    $("footer").load("footer.html");
+  });
 </script>
 
 <!---------- Navbar Script------------- -->
 <script>
-  let userInfo = JSON.parse(localStorage.getItem('userInfo')) 
-// let userInfo = null
-if(userInfo){
+  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  // let userInfo = null
+  if (userInfo) {
     console.log(userInfo);
+    let div = document.getElementById("signUpY");
+    let div2 = document.getElementById("aboutY");
+    div.innerHTML = userInfo;
+    div.style.color = "white";
 
-    let name = userInfo.name.split(" ")[0];
-    let div = document.getElementById("signUpY")
-    let div2 = document.getElementById('aboutY')
-    div.innerHTML = name;
-	div.style.color="white"
-
-    div.addEventListener("click" , ()=>{
-        window.location.href ="./profile.html"
-    })
-    div2.addEventListener('click',()=>{
-        window.location.href ="./dashboard.html"
-    })
-}else{
-    let div = document.getElementById("signUpY")
-    let div2 = document.getElementById('aboutY')
-    div.addEventListener("click" , ()=>{
-        window.location.href = "./login_signup.html"
-    })
-    div2.addEventListener('click',()=>{
-        alert('You have to login first')
-    })
-	div.style.color="white"
-}
-
+    div.addEventListener("click", () => {
+      window.location.href = "./profile.html";
+    });
+    div2.addEventListener("click", () => {
+      window.location.href = "./dashboard.html";
+    });
+  } else {
+    let div = document.getElementById("signUpY");
+    let div2 = document.getElementById("aboutY");
+    div.addEventListener("click", () => {
+      window.location.href = "./login_signup.html";
+    });
+    div2.addEventListener("click", () => {
+      swal.fire({
+        icon: "info",
+        title: "Access Denied",
+        text: "You have to login first.",
+        showConfirmButton: true,
+        confirmButtonText: "OK",
+      });
+    });
+    div.style.color = "white";
+  }
 </script>
 
 <script src="./Scripts/indexpage.js"></script>
